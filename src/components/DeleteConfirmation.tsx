@@ -1,5 +1,7 @@
 import { FC } from 'react'
 
+import classes from './DeleteConfirmation.module.scss'
+
 type Todo = {
   id: string
   title: string
@@ -38,8 +40,8 @@ export const DeleteConfirmation: FC<Props> = (props) => {
   }
 
   return showModal ? (
-    <div className="modal">
-      <div className="modal-inner">
+    <div className={classes.modal}>
+      <div className={classes.modalInner}>
         <p>本当に削除しますか？</p>
         <button onClick={onClickDeleteCancel}>キャンセル</button>
         {deleteTodoId !== null && (

@@ -1,5 +1,7 @@
 import { FC } from 'react'
 
+import classes from './Todo.module.scss'
+
 type Todo = {
   id: string
   title: string
@@ -54,7 +56,7 @@ export const Todo: FC<Props> = (props) => {
   }
 
   return (
-    <li className="list-row">
+    <li className={classes.listRow}>
       <input
         type="checkbox"
         checked={todo.completed}

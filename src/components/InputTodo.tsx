@@ -1,6 +1,8 @@
 import { FC } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
+import classes from './InputTodo.module.scss'
+
 type Todo = {
   id: string
   title: string
@@ -33,7 +35,7 @@ export const InputTodo: FC<Props> = (props) => {
   }
 
   return (
-    <div className="input-area">
+    <div className={classes.inputArea}>
       <input value={todoText} onChange={onChangeTodoText} />
       <button onClick={onClickAddTodo}>保存</button>
     </div>
