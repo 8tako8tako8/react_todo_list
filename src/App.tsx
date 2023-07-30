@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { DeleteConfirmation } from './components/DeleteConfirmation'
+import { InputTodo } from './components/InputTodo'
+import { TodoArea } from './components/TodoArea'
+
+type Todo = {
+  id: string
+  title: string
+  completed: boolean
+  editing: boolean
 }
 
-export default App;
+export default function App() {
+  const [todoText, setTodoText] = useState('')
+  const [todos, setTodos] = useState<Todo[]>([])
+  const [showModal, setShowModal] = useState(false)
+  const [deleteTodoId, setDeleteTodoId] = useState<string>('')
+
+  return (
+    <>
+      <InputTodo
+        todos={todos}
+        todoText={todoText}
+        setTodoText={setTodoText}
+        setTodos={setTodos}
+      />
+      <TodoArea
+        todos={todos}
+        showModal={showModal}
+        deleteTodoId={deleteTodoId}
+        setTodos={setTodos}
+        setShowModal={setShowModal}
+        setDeleteTodoId={setDeleteTodoId}
+      />
+      <DeleteConfirmation
+        todos={todos}
+        showModal={showModal}
+        deleteTodoId={deleteTodoId}
+        setTodos={setTodos}
+        setShowModal={setShowModal}
+        setDeleteTodoId={setDeleteTodoId}
+      />
+    </>
+  )
+}
